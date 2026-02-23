@@ -14,24 +14,31 @@ project_type = st.sidebar.selectbox(
 # Logic for different projects
 if project_type == "Structural Steel":
     st.header("Structural Steel Details")
-    col1, col2 = st.columns(2)
-    with col1:
-        columns = st.number_input("Number of Columns", min_value=0, step=1)
-        beams = st.number_input("Number of Beams", min_value=0, step=1)
-        embeds = st.number_input("Number of Embeds", min_value=0, step=1)
-    with col2:
-        # Updated to your specific shop standard
-        finish = st.selectbox("Finish Type", ["Metalux Gray Primer", "Galvanized", "Raw Steel", "Powder Coated"])
+    
+    # Using three columns for a tighter layout
+    row1_col1, row1_col2, row1_col3 = st.columns(3)
+    with row1_col1:
+        columns = st.number_input("Columns", min_value=0, step=1)
+    with row1_col2:
+        beams = st.number_input("Beams", min_value=0, step=1)
+    with row1_col3:
+        channels = st.number_input("Channels", min_value=0, step=1)
+        
+    row2_col1, row2_col2 = st.columns(2)
+    with row2_col1:
+        embeds = st.number_input("Embeds", min_value=0, step=1)
         plans = st.text_input("Plan Reference (e.g. S-101)")
+    with row2_col2:
+        finish = st.selectbox("Finish Type", ["Metalux Gray Primer", "Galvanized", "Raw Steel", "Powder Coated"])
 
-    # Formatting the output with Embeds included
+    # Formatting the output with the new Channels line
     description = f"""PROJECT SCOPE: Custom Structural Steel Fabrication
 --------------------------------------------------
-COMPONENTS: ({columns}) Columns | ({beams}) Beams | ({embeds}) Embeds
+COMPONENTS: ({columns}) Columns | ({beams}) Beams 
+            ({channels}) Channels | ({embeds}) Embeds
 MATERIAL: Grade A36 Structural Steel
 FINISH: {finish}
 REF: Per Blueprints / Plan Page(s): {plans if plans else "N/A"}"""
-
 elif project_type == "Misc Metals":
     st.header("Misc Metals Details")
     col1, col2 = st.columns(2)
