@@ -18,14 +18,16 @@ if project_type == "Structural Steel":
     with col1:
         columns = st.number_input("Number of Columns", min_value=0, step=1)
         beams = st.number_input("Number of Beams", min_value=0, step=1)
+        embeds = st.number_input("Number of Embeds", min_value=0, step=1)
     with col2:
-        finish = st.selectbox("Finish Type", ["Red Oxide Primer", "Galvanized", "Raw Steel", "Powder Coated"])
+        # Updated to your specific shop standard
+        finish = st.selectbox("Finish Type", ["Metalux Gray Primer", "Galvanized", "Raw Steel", "Powder Coated"])
         plans = st.text_input("Plan Reference (e.g. S-101)")
 
-    # Formatting the output
+    # Formatting the output with Embeds included
     description = f"""PROJECT SCOPE: Custom Structural Steel Fabrication
 --------------------------------------------------
-COMPONENTS: ({columns}) Columns | ({beams}) Beams
+COMPONENTS: ({columns}) Columns | ({beams}) Beams | ({embeds}) Embeds
 MATERIAL: Grade A36 Structural Steel
 FINISH: {finish}
 REF: Per Blueprints / Plan Page(s): {plans if plans else "N/A"}"""
