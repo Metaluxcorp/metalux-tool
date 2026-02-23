@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.set_page_config(page_title="Metalux Invoice Tool", page_icon="🏗️")
+st.set_page_config(page_title="Metalux Estimate/Invoice Generator", page_icon="🏗️")
 
 st.title("🏗️ Metalux Corp Description Generator")
 st.markdown("Use this to generate uniform invoice descriptions. Fill in the fields and copy the result.")
